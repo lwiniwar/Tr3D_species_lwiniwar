@@ -6,7 +6,7 @@ This submission uses [PointNet++](https://github.com/charlesq34/pointnet2) with 
 
 - rotational augementation limited to the Z-Axis (vertical axis)
 
-- sampling method to create point clouds of equal size (~16k points per sample)
+- sampling method to create point clouds of equal size (~32k points per sample)
 
 - weighted loss calculation to account for class imbalance
 
@@ -16,7 +16,7 @@ For the leaderboard in the challenge, please visit [stefp's repository hosting t
 
 ## Training performance
 
-to tune the hyperparameters of the network, a validation set was created, amounting to 10% of the training set. The 10% were chosen randomly from each class, to ensure that every class also has samples in the validation set. No separate test set was created, as this is governed by the challenge.
+To tune the hyperparameters of the network, a validation set was created, amounting to 10% of the training set. The 10% were chosen randomly from each class, to ensure that every class also has samples in the validation set. No separate test set was created, as this is governed by the challenge. The train/validation split was the same as the one used by [Brent Murray](https://github.com/Brent-Murray/TR3D_PointAugDGCNN).
 
 ## Tunable and tuned hyperparameters
 
@@ -40,24 +40,32 @@ We trained the NN with different settings for all of these parameters, and obser
 
 ## Running inference
 
-To run the model on new data, ensure to download the weights of the model provided [here](). Then, change the parameters in `tree_classification_inference.py` to fit your input data (paths, path to the model) and run it.
+To run the model on new data, ensure to download the weights of the model provided [here](best.model). Then, change the parameters in `tree_classification_inference.py` to fit your input data (paths, path to the model) and run it.
 
 This code assumes you have a GPU with CUDA enabled. It has been tested on Windows.
 
+## Validation results and parameters
+Find the parameter settings and the validation results for the submitted model below:
+
+| Parameter        | Setting           | Comment                |
+|------------------|-------------------|------------------------|
+| Optimizer        | Adam              |                        |
+| Learning Rate    | 0.0001            | (1e-4)                 |
+| Augmentation     | Rotation (6-fold) | 60 deg rotations       |
+| Number of points | 16,384            |                        |
+| Batch size       | 16                |                        |
+| No. of epochs    | 100               | Best model at Epoch 54 |
 
 
+| Metric           | Score  |
+|------------------|--------|
+| Mean training loss| 0.3723 |
+| Mean validation loss| 0.7300 |
+| F1 validation    | 0.7761 |
+| Precision validation|  0.7899      |
+| Recall validation       |  0.7724      |
+| Macro accuracy validation    |  77.24%    |
 
+Confusion matrix for the validation set:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img.png](confusion_matrix_validation.png)
