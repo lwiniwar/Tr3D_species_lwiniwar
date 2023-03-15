@@ -40,7 +40,7 @@ We trained the NN with different settings for all of these parameters, and obser
 
 ## Running training phase
 
-To start the training, run the code provided in `tree_classification.py`. The code assumes that the training data is provided in a subfolder called `COST-Challenge`, which contains the CSV file pointing to the point clouds: The 2nd column should be the species (or id), the 7th column should be the filename relative to a `train` subfolder in the `COST-Challenge` folder, and the 9th column should be either 'train' or something else (e.g. 'test', 'validation') to define the train/validation split. This is provided in the repository.
+To start the training, run the code provided in `tree_classification.py`. The code assumes that the training data is provided in a subfolder called `COST-Challenge`, which contains the CSV file pointing to the point clouds: The 2nd column should be the species (or id), the 7th column should be the filename relative to a `train` subfolder in the `COST-Challenge` folder, and the 9th column should be either 'train' or something else (e.g. 'test', 'validation') to define the train/validation split. This is provided in the repository in the `COST-Challenge/tree_metadata_training_publish_BM.csv` file.
 
 ## Running inference
 
