@@ -38,6 +38,10 @@ The network comes with a number of tunable hyperparameters. An incomplete list f
 
 We trained the NN with different settings for all of these parameters, and observed the performance in macro F1 scores. The model with the best performance on the validation data during the training loop (not necessarily the last model) was selected.
 
+## Running training phase
+
+To start the training, run the code provided in `tree_classification.py`. The code assumes that the training data is provided in a subfolder called `COST-Challenge`, which contains the CSV file pointing to the point clouds: The 2nd column should be the species (or id), the 7th column should be the filename relative to a `train` subfolder in the `COST-Challenge` folder, and the 9th column should be either 'train' or something else (e.g. 'test', 'validation') to define the train/validation split. This is provided in the repository.
+
 ## Running inference
 
 To run the model on new data, ensure to download the weights of the model provided [here](best.model). Then, change the parameters in `tree_classification_inference.py` to fit your input data (paths, path to the model) and run it.
